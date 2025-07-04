@@ -45,7 +45,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection }) =
             05. Contact
           </a>
           <a
-              href="/David-Oluwadamipe-Akintayo_Resume.pdf"
+              href="https://david-akintayo-portflio-i5an.vercel.app/David-Oluwadamipe-Akintayo_Resume.pdf"
               className="nav-link resume-link"
               download="David-Akintayo-Resume.pdf"
               rel="noopener noreferrer"
