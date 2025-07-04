@@ -5,7 +5,8 @@
   "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "prebuild": "chmod +x node_modules/.bin/vite",
+    "build": "npx vite build",
     "preview": "vite preview"
   },
   "repository": {
@@ -16,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "bugs": {
     "url": "https://github.com/dav1d001/david-akintayo-portflio/issues"
   },
