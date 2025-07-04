@@ -45,22 +45,21 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection }) =
             05. Contact
           </a>
           <a
-            href="/public/David-Oluwadamipe-Akintayo_Resume.pdf"
-            className="nav-link resume-link"
-            download="David-Akintayo-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+              href="/David-Oluwadamipe-Akintayo_Resume.pdf"
+              className="nav-link resume-link"
+              download="David-Akintayo-Resume.pdf"
+              rel="noopener noreferrer"
           >
             Resume
           </a>
         </div>
 
         <button
-          className="nav-toggle"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+            className="nav-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
         >
-          {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
     </nav>
