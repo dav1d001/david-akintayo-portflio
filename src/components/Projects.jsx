@@ -1,4 +1,5 @@
 import { FiCode, FiGithub } from 'react-icons/fi'
+import { motion } from 'framer-motion'
 
 import votesphereImage from '../../votesphere.png'
 import edlearnImage from '../assets/edlearn.png'
@@ -6,31 +7,24 @@ import edlearnImage from '../assets/edlearn.png'
 const Projects = () => {
   const projects = [
     {
-      title: "VoteSphere",
-      description: "Decentralized voting platform built with blockchain technology for secure, transparent elections.",
-      technologies: ["React", "Node.js", "Ethereum", "Solidity"],
-      github: "https://github.com/dav1d001/VoteSphere",
-      category: "Blockchain",
+      title: 'VoteSphere',
+      description: 'Decentralized voting platform built with blockchain technology for secure, transparent elections.',
+      technologies: ['React', 'Node.js', 'Ethereum', 'Solidity'],
+      github: 'https://github.com/dav1d001/VoteSphere',
+      category: 'Blockchain',
       image: votesphereImage,
-      imageAlt: "VoteSphere project screenshot"
+      imageAlt: 'VoteSphere project screenshot'
     },
     {
-      title: "EdLearn Platform",
-      description: "Educational management system with interactive learning modules and progress tracking.",
-      technologies: ["React", "Express", "MongoDB", "Socket.io"],
-      github: "https://github.com/dazeez1/EDLEARN/",
-      category: "Education",
+      title: 'EdLearn Platform',
+      description: 'Educational management system with interactive learning modules and progress tracking.',
+      technologies: ['React', 'Express', 'MongoDB', 'Socket.io'],
+      github: 'https://github.com/dazeez1/EDLEARN/',
+      category: 'Education',
       image: edlearnImage,
-      imageAlt: "EdLearn platform screenshot"
+      imageAlt: 'EdLearn platform screenshot'
     },
-    {
-      title: "Portfolio Showcase",
-      description: "Modern, responsive portfolio website with interactive animations and smooth user experience.",
-      technologies: ["React", "CSS3", "JavaScript", "Canvas API"],
-      github: "https://github.com/dav1d001/portfolio",
-      category: "Web Design",
-      useIcon: true
-    }
+    // Removed "Portfolio Showcase" entry per request
   ]
 
   return (
@@ -44,42 +38,45 @@ const Projects = () => {
 
         <div className="projects-list">
           {projects.map((project, index) => (
-            <div key={index} className={`project-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-              <div className="project-content">
-                <div className="project-overline">Featured Project</div>
-                <h3 className="project-title">{project.title}</h3>
-                <div className="project-description">
-                  <p>{project.description}</p>
+            <motion.article
+              key={index}
+              className="project-card glass"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.6, ease: [0.22, 0.9, 0.32, 1] }}
+            >
+              <div className="project-image-top">
+                {project.image ? (
+                  <img src={project.image} alt={project.imageAlt || project.title} className="project-screenshot" />
+                ) : (
+                  <div className="project-image-placeholder"><FiCode size={48} /></div>
+                )}
+                <div className="project-image-overlay">
+                  <div className="project-image-overlay-inner">
+                    <h3 className="project-title">{project.title}</h3>
+                    <div className="project-category">{project.category}</div>
+                  </div>
                 </div>
+              </div>
+
+              <div className="project-body">
+                <p className="project-description">{project.description}</p>
                 <div className="project-tech-list">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex}>{tech}</span>
+                  {Array.isArray(project.technologies) && project.technologies.map((tech, i) => (
+                    <span key={i} className="tech-pill">{tech}</span>
                   ))}
                 </div>
                 <div className="project-links">
-                  <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                    <FiGithub size={20} />
-                  </a>
+                  {project.github && (
+                    <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer" aria-label={`${project.title} - source on GitHub`}>
+                      <FiGithub size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
-              <div className="project-image">
-                <div className="project-image-wrapper">
-                  <div className="project-placeholder">
-                      {project.useIcon ? (
-                          <FiCode size={48} className="project-icon"/>
-                      ) : (
-                          <img
-                              src={project.image}
-                              alt={project.imageAlt}
-                              className="project-screenshot"
-                          />
-                      )}
-                  <span className="project-category">{project.category}</span>
-                </div>
-              </div>
-            </div>
-            </div>
-            ))}
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

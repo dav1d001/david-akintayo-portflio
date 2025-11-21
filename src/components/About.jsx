@@ -1,4 +1,5 @@
 import { FiCode } from 'react-icons/fi'
+import fallbackPortrait from '../assets/portfolio.jpg'
 
 const About = () => {
   return (
@@ -49,10 +50,8 @@ const About = () => {
           </div>
 
           <div className="about-image">
-            <div className="image-wrapper">
-              <div className="image-placeholder">
-                <FiCode size={64} />
-              </div>
+            <div className="about-image-container image-wrapper glass">
+              <img src={fallbackPortrait} alt="Photo of David Akintayo" className="about-portrait" loading="lazy" />
             </div>
           </div>
         </div>

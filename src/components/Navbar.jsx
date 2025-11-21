@@ -1,11 +1,11 @@
 import { FiX, FiMenu } from 'react-icons/fi'
 
-const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection }) => {
+const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection, isScrolled }) => {
   return (
-    <nav className="nav">
-      <div className="nav-container">
-        <div className="nav-brand">
-          <span className="brand-text">DA</span>
+    <nav className={`nav nav-floating ${isScrolled ? 'nav-scrolled' : ''}`} role="navigation" aria-label="Main Navigation">
+      <div className={`nav-container nav-floating-container ${isScrolled ? 'nav-container--scrolled' : ''}`}>
+        <div className="nav-left">
+          <a href="#hero" className="brand-text" onClick={() => scrollToSection('hero')}>David Akintayo</a>
         </div>
 
         <div className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}>
@@ -14,53 +14,57 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection }) =
             className={`nav-link ${activeSection === 'hero' ? 'active' : ''}`}
             onClick={() => scrollToSection('hero')}
           >
-            01. Home
+            Home
           </a>
           <a
             href="#about"
             className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
             onClick={() => scrollToSection('about')}
           >
-            02. About
+            About
           </a>
           <a
             href="#projects"
             className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
             onClick={() => scrollToSection('projects')}
           >
-            03. Work
+            Work
           </a>
           <a
             href="#skills"
             className={`nav-link ${activeSection === 'skills' ? 'active' : ''}`}
             onClick={() => scrollToSection('skills')}
           >
-            04. Skills
+            Skills
           </a>
           <a
             href="#contact"
             className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
             onClick={() => scrollToSection('contact')}
           >
-            05. Contact
-          </a>
-          <a
-              href="https://david-akintayo-portflio-i5an.vercel.app/David-Oluwadamipe-Akintayo_Resume.pdf"
-              className="nav-link resume-link"
-              download="David-Akintayo-Resume.pdf"
-              rel="noopener noreferrer"
-          >
-            Resume
+            Contact
           </a>
         </div>
 
-        <button
+        <div className="nav-right">
+          <a
+            href="/David-Oluwadamipe-Akintayo_Resume.pdf"
+            className="nav-link resume-link"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
+          <button
             className="nav-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
-        >
-        {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
       </div>
     </nav>
   )

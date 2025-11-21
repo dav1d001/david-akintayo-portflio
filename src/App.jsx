@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [isScrolled, setIsScrolled] = useState(false)
   const [particles, setParticles] = useState([])
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
@@ -152,6 +153,17 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
+  // Track scroll to update navbar compact state
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="app">
       <Navbar
@@ -159,6 +171,7 @@ function App() {
         setIsMenuOpen={setIsMenuOpen}
         activeSection={activeSection}
         scrollToSection={scrollToSection}
+        isScrolled={isScrolled}
       />
 
       <Hero
