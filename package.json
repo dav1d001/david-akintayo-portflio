@@ -18,7 +18,7 @@
   "license": "ISC",
   "type": "module",
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "bugs": {
     "url": "https://github.com/dav1d001/david-akintayo-portflio/issues"
