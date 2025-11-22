@@ -955,6 +955,15 @@ section {
     margin: 0 auto;
   }
 
+  /* Reduce project image height and card padding for tablet */
+  .project-image-top {
+    height: 280px;
+  }
+
+  .project-body {
+    padding: 1.25rem; /* reduce from 2rem */
+  }
+
   .project-item {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1030,6 +1039,31 @@ section {
   .skill-card {
     padding: 20px;
   }
+
+  /* Stack hero buttons vertically and make them full-width on small screens */
+  .hero-buttons { display:flex; flex-direction:column; gap:12px; align-items:stretch; }
+  .hero-buttons .btn { width:100%; justify-content:center; }
+
+  /* Further reduce project image height on small phones */
+  .project-image-top { height: 200px; }
+
+  /* Tighter project body padding */
+  .project-body { padding: 1rem; }
+}
+
+/* Additional breakpoint: medium desktops */
+@media (max-width: 1024px) {
+  .project-image-top { height: 320px; }
+  .hero-content { padding: 0 60px; }
+}
+
+/* Ensure images scale nicely on all screens */
+.project-image-top .project-screenshot,
+.about-image-container img.about-portrait,
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Accessibility */
